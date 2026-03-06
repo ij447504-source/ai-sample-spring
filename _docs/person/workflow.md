@@ -1,6 +1,6 @@
 # 아이디(username) 중복체크 기능
 
-## 개요
+## 개요 
 
 회원가입 시 username 입력 후 중복 여부를 Ajax로 확인하는 REST API
 
