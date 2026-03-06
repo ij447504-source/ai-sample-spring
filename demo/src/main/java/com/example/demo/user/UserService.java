@@ -13,4 +13,8 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
     private final UserRepository userRepository;
 
+    public boolean usernameCheck(String username) {
+        Optional<User> user = userRepository.findByUsername(username);
+        return user.isPresent();
+    }
 }
