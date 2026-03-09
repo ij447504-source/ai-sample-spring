@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입 - 주소 연동</title>
+</head>
+<body>
+    <h1>회원가입 (주소 API 연동)</h1>
+    <hr>
+    
+    <form action="/join" method="post">
+        <div>
+            <label>아이디:</label>
+            <input type="text" name="username" required>
+        </div>
+        <div>
+            <label>비밀번호:</label>
+            <input type="password" name="password" required>
+        </div>
+        <div>
+            <label>이메일:</label>
+            <input type="email" name="email" required>
+        </div>
+        
+        <br>
+        <label>주소 정보:</label>
+        <div>
+            <!-- 우편번호: readonly로 직접 입력 차단 -->
+            <input type="text" id="zipcode" name="zipcode" placeholder="우편번호" readonly required>
+            <button type="button" onclick="searchAddress()">주소 찾기</button>
+        </div>
+        <div>
+            <!-- 기본 주소: readonly로 직접 입력 차단 -->
+            <input type="text" id="address" name="address" placeholder="기본 주소" readonly required style="width: 300px;">
+        </div>
+        <div>
+            <!-- 상세 주소: 사용자가 직접 입력 -->
+            <input type="text" id="detailAddress" name="detailAddress" placeholder="상세 주소(예: 아파트 동/호수)" required style="width: 300px;">
+        </div>
+
+        <br>
+        <button type="submit">가입 완료</button>
+    </form>
+
+    <!-- 카카오 우편번호 서비스 스크립트 -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        function searchAddress() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    // API 결과 데이터를 필드에 주입
+                    document.getElementById('zipcode').value = data.zonecode; // 우편번호
+                    document.getElementById('address').value = data.address;  // 기본 주소
+                    // 상세 주소 입력란으로 포커스 자동 이동
+                    document.getElementById('detailAddress').focus();
+                }
+            }).open();
+        }
+    </script>
+</body>
+</html>
