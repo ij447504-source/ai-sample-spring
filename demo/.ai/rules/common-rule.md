@@ -1,27 +1,20 @@
-﻿# 코드 컨벤션
-
-이 프로젝트의 소스 파일을 생성하거나 수정할 때 반드시 이 컨벤션을 따른다.
-각 레이어의 상세 코드 템플릿과 예시는 `_docs/.ai/skill/` 폴더의 해당 skill을 참조한다.
-
----
-
+﻿---
 ## 패키지 구조
 
 도메인 기반 플랫 구조를 사용한다. 레이어 기반 구조는 절대 사용하지 않는다.
 
 ```
 com.example.demo/
-  _core/utils/       ← 도메인 무관 공통 유틸 (Resp.java 등)
-  {domain}/          ← 해당 도메인의 모든 파일을 한 폴더에 (플랫)
-    {Domain}.java
-    {Domain}Controller.java       ← SSR (Mustache)
-    {Domain}ApiController.java    ← REST API (/api 접두사)
-    {Domain}Service.java
-    {Domain}Repository.java
-    {Domain}Request.java
-    {Domain}Response.java
+_core/utils/       ← 도메인 무관 공통 유틸 (Resp.java 등)
+{domain}/          ← 해당 도메인의 모든 파일을 한 폴더에 (플랫)
+{Domain}.java
+{Domain}Controller.java       ← SSR (Mustache)
+{Domain}ApiController.java    ← REST API (/api 접두사)
+{Domain}Service.java
+{Domain}Repository.java
+{Domain}Request.java
+{Domain}Response.java
 ```
-
 ---
 
 ## 어노테이션 순서

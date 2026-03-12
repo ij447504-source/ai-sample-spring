@@ -13,8 +13,4 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
     private final UserRepository userRepository;
 
-    @Transactional
-    public void join(UserRequest.Join joinDTO) {
-        userRepository.save(joinDTO.toEntity());
-    }
 }
